@@ -16,6 +16,7 @@ import './App.scss';
 class App extends Component {
   state = {
     authed: false,
+    gitHub_userName: '',
   };
 
   componentDidMount() {
@@ -37,8 +38,8 @@ class App extends Component {
     this.removeListener();
   }
 
-  isAuthenticated = () => {
-    this.setState({ authed: true });
+  isAuthenticated = (userName) => {
+    this.setState({ authed: true, gitHub_userName: userName });
   };
 
   render() {
@@ -57,12 +58,14 @@ class App extends Component {
     return (
       <div className="App">
         <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
-        <div className="row">
-          <Profile />
-          <Resources />
-        </div>
-        <div className="row">
-          <Graph />
+        <div className="container-fluid">
+          <div className="row justify-content-around py-3">
+            <Profile />
+            <Resources />
+          </div>
+          <div className="row">
+            <Graph />
+          </div>
         </div>
       </div>
     );
