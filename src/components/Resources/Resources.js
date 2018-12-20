@@ -4,7 +4,7 @@ import './Resources.scss';
 class Resources extends React.Component {
   render() {
     return (
-      <div className="Resources col-6">
+      <div className="Resources col-7">
         <h2>Resources Form Goes Here</h2>
       </div>
     );

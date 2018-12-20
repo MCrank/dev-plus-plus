@@ -6,11 +6,6 @@ const githubAuth = () => {
   return firebase.auth().signInWithPopup(provider);
 };
 
-const googleAuth = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  return firebase.auth().signInWithPopup(provider);
-};
-
 const logoutUser = () => firebase.auth().signOut();
 
-export default { githubAuth, googleAuth, logoutUser };
+export default { githubAuth, logoutUser };
