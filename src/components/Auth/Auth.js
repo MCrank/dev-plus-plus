@@ -8,9 +8,11 @@ class Auth extends React.Component {
     authRequests
       .githubAuth()
       .then((results) => {
-        console.log(results);
+        // console.log(results);
         const userName = results.additionalUserInfo.username;
-        this.props.isAuthenticated(userName);
+        const { accessToken } = results.credential;
+        // console.log('AccessToken', accessToken);
+        this.props.isAuthenticated(userName, accessToken);
       })
       .catch(error => console.error('There was an error with AuthRequest', error));
   };

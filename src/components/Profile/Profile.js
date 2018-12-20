@@ -1,28 +1,55 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, CardBody, CardTitle, CardText, CardImg,
 } from 'reactstrap';
+import githubRequests from '../../helpers/data/githubRequests';
 import './Profile.scss';
 
 class Profile extends React.Component {
+  state = {
+    gitHubProfile: [],
+  };
+
+  static propTypes = {
+    gitHubUserName: PropTypes.string,
+    gitHubAccessToken: PropTypes.string,
+  };
+
+  componentDidMount() {
+    const { gitHubUserName, gitHubAccessToken } = this.props;
+    if (gitHubUserName && gitHubAccessToken) {
+      githubRequests
+        .getGitHubUser(gitHubUserName, gitHubAccessToken)
+        .then((gitHubProfile) => {
+          this.setState({ gitHubProfile });
+        })
+        .catch(error => console.error('There was an error getting the  github user info', error));
+    }
+  }
+
   render() {
+    const { gitHubProfile } = this.state;
+    console.log('Profile', gitHubProfile);
     return (
       <div className="Profile col-4">
         <Card>
           <CardImg
             top
             width="50%"
-            src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+            src={gitHubProfile.avatar_url}
             alt="Card image cap"
+            className="mx-auto"
           />
           <CardBody>
-            <CardTitle>Card Title</CardTitle>
+            <CardTitle>{gitHubProfile.name}</CardTitle>
+            <CardText>{gitHubProfile.bio}</CardText>
             <CardText>
-              This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.
-            </CardText>
-            <CardText>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted">
+                <a href={gitHubProfile.html_url} target="_blank" rel="noopener noreferrer">
+                  {gitHubProfile.html_url}
+                </a>
+              </small>
             </CardText>
           </CardBody>
         </Card>
