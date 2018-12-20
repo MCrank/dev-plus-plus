@@ -24,13 +24,6 @@ class App extends Component {
   componentDidMount() {
     connection();
 
-    // githubRequests
-    //   .getGitHubUser(this.state.gitHubUserName, this.state.gitHubAccessToken)
-    //   .then((result) => {
-    //     console.log('GetgutHub user in App.js', result);
-    //   })
-    //   .catch(error => console.error('There was an error getting the  github user info', error));
-
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const gitHubUserNameStorage = sessionStorage.getItem('gitHubUsername');
@@ -73,15 +66,6 @@ class App extends Component {
         gitHubAccessToken: '',
       });
     };
-
-    // const getGitHubUser = () => {
-    //   githubRequests
-    //     .getGitHubUser(this.state.gitHubUserName, this.state.gitHubAccessToken)
-    //     .then((result) => {
-    //       console.log('GetgutHub user in App.js', result);
-    //     })
-    //  .catch(error => console.error('There was an error getting the  github user info', error));
-    // };
 
     if (!this.state.authed) {
       return (
