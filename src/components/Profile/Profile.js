@@ -30,7 +30,6 @@ class Profile extends React.Component {
 
   render() {
     const { gitHubProfile } = this.state;
-    console.log('Profile', gitHubProfile);
     return (
       <div className="Profile col-4">
         <Card>
@@ -52,6 +51,10 @@ class Profile extends React.Component {
               </small>
             </CardText>
           </CardBody>
+          <CardText className="h2">
+            <u>10</u>
+          </CardText>
+          <CardText>Commits in the last 5 days</CardText>
         </Card>
       </div>
     );
