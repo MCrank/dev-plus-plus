@@ -18,7 +18,18 @@ const getGitHubCommits = (userName, accessToken) => new Promise((resolve, reject
       headers: { Authorization: `token ${accessToken}` },
     })
     .then((result) => {
-      const commitCount = result.data.filter(event => event.type === 'PushEvent').length;
+      let commitCount = 0;
+      const pushEvents = result.data.filter(event => event.type === 'PushEvent');
+      pushEvents.forEach((pushEvent) => {
+        commitCount += pushEvent.payload.commits.length;
+        // pushEvent.payload.commits.forEach((commit) => {
+        //   if (commit.distinct === true) {
+        //     console.log(pushEvent.payload.commits.length);
+        //     commitCount += pushEvent.payload.commits.length;
+        //   }
+        // });
+      });
+      // const commitCount = result.data.filter(event => event.type === 'PushEvent').length;
       resolve(commitCount);
     })
     .catch(error => reject(error));
