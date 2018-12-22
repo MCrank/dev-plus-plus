@@ -18,7 +18,12 @@ const getGitHubCommits = (userName, accessToken) => new Promise((resolve, reject
       headers: { Authorization: `token ${accessToken}` },
     })
     .then((result) => {
-      const commitCount = result.data.filter(event => event.type === 'PushEvent').length;
+      let commitCount = 0;
+      const pushEvents = result.data.filter(event => event.type === 'PushEvent');
+      pushEvents.forEach((pushEvent) => {
+        // Loop through each event and grab the length of the commit array
+        commitCount += pushEvent.payload.commits.length;
+      });
       resolve(commitCount);
     })
     .catch(error => reject(error));
