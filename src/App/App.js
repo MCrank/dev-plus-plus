@@ -5,11 +5,9 @@ import 'firebase/auth';
 import connection from '../helpers/data/connection';
 import Auth from '../components/Auth/Auth';
 import authRequests from '../helpers/data/authRequests';
-// import githubRequests from '../helpers/data/githubRequests';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Profile from '../components/Profile/Profile';
 import Resources from '../components/Resources/Resources';
-// import OutputForm from '../components/OutputForm/OutputForm';
 import Graph from '../components/Graph/Graph';
 
 import './App.scss';
