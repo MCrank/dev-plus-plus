@@ -21,15 +21,9 @@ const getGitHubCommits = (userName, accessToken) => new Promise((resolve, reject
       let commitCount = 0;
       const pushEvents = result.data.filter(event => event.type === 'PushEvent');
       pushEvents.forEach((pushEvent) => {
+        // Loop through each event and grab the length of the commit array
         commitCount += pushEvent.payload.commits.length;
-        // pushEvent.payload.commits.forEach((commit) => {
-        //   if (commit.distinct === true) {
-        //     console.log(pushEvent.payload.commits.length);
-        //     commitCount += pushEvent.payload.commits.length;
-        //   }
-        // });
       });
-      // const commitCount = result.data.filter(event => event.type === 'PushEvent').length;
       resolve(commitCount);
     })
     .catch(error => reject(error));
