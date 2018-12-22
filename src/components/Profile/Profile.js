@@ -9,6 +9,7 @@ import './Profile.scss';
 class Profile extends React.Component {
   state = {
     gitHubProfile: [],
+    gitHubCommitCount: 0,
   };
 
   static propTypes = {
@@ -23,13 +24,18 @@ class Profile extends React.Component {
         .getGitHubUser(gitHubUserName, gitHubAccessToken)
         .then((gitHubProfile) => {
           this.setState({ gitHubProfile });
+          githubRequests
+            .getGitHubCommits(gitHubUserName, gitHubAccessToken)
+            .then((gitHubCommitCount) => {
+              this.setState({ gitHubCommitCount });
+            });
         })
         .catch(error => console.error('There was an error getting the  github user info', error));
     }
   }
 
   render() {
-    const { gitHubProfile } = this.state;
+    const { gitHubProfile, gitHubCommitCount } = this.state;
     return (
       <div className="Profile col-4">
         <Card>
@@ -52,7 +58,7 @@ class Profile extends React.Component {
             </CardText>
           </CardBody>
           <CardText className="h2">
-            <u>10</u>
+            <u>{gitHubCommitCount}</u>
           </CardText>
           <CardText>Commits in the last 5 days</CardText>
         </Card>
