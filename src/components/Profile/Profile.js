@@ -37,7 +37,7 @@ class Profile extends React.Component {
   render() {
     const { gitHubProfile, gitHubCommitCount } = this.state;
     return (
-      <div className="Profile col-4">
+      <div className="Profile col-md-4">
         <Card>
           <CardImg
             top

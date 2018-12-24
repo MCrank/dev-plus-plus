@@ -1,0 +1,68 @@
+{
+  "articles": {
+    "article1": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "resource",
+      "isCompleted": false,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article2": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "resource",
+      "isCompleted": true,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article3": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "tutorial",
+      "isCompleted": false,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article4": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "tutorial",
+      "isCompleted": true,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article5": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "blog",
+      "isCompleted": false,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article6": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "blog",
+      "isCompleted": true,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article7": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "podcast",
+      "isCompleted": false,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    },
+    "article8": {
+      "name": "CSS Tricks",
+      "url": "https://css-tricks.com/",
+      "type": "podcast",
+      "isCompleted": true,
+      "completedDate": 1545447594,
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+    }
+  }
+}

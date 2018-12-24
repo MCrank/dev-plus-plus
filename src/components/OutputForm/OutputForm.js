@@ -4,7 +4,7 @@ import './OutputForm.scss';
 class OutputForm extends React.Component {
   render() {
     return (
-      <div className="OutputForm col-6 align-self-end">
+      <div className="OutputForm">
         <h2>Output Form Goes Here</h2>
       </div>
     );

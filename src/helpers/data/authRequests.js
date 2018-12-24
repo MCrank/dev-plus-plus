@@ -8,4 +8,6 @@ const githubAuth = () => {
 
 const logoutUser = () => firebase.auth().signOut();
 
-export default { githubAuth, logoutUser };
+const getCurrentUid = () => firebase.auth().currentUser.uid;
+
+export default { githubAuth, logoutUser, getCurrentUid };
