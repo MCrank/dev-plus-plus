@@ -114,7 +114,9 @@ class App extends Component {
   };
 
   render() {
-    const { gitHubUserName, gitHubAccessToken } = this.state;
+    const {
+      gitHubUserName, gitHubAccessToken, resources, tutorials, blogs, podcasts,
+    } = this.state;
     const logoutClickEvent = () => {
       authRequests.logoutUser();
       sessionStorage.clear();
@@ -142,7 +144,12 @@ class App extends Component {
             <Profile gitHubUserName={gitHubUserName} gitHubAccessToken={gitHubAccessToken} />
             <div className="resource-area col-md-8">
               <InputForm onSubmit={this.formSubmitEvent} />
-              <OutputForm />
+              <OutputForm
+                tutorials={tutorials}
+                resources={resources}
+                blogs={blogs}
+                podcasts={podcasts}
+              />
             </div>
           </div>
           <div className="graph-output row">
