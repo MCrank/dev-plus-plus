@@ -29,41 +29,8 @@ class App extends Component {
   componentDidMount() {
     connection();
 
-    this.getAllArticles();
     // Get all the articles for the logged on user and push them into seperate state based on 'type'
-    // articleRequests
-    //   .getArticles(sessionStorage.getItem('uid'))
-    //   .then((articles) => {
-    //     const resources = [];
-    //     const tutorials = [];
-    //     const blogs = [];
-    //     const podcasts = [];
-    //     articles.forEach((article) => {
-    //       switch (article.type) {
-    //         case 'resource':
-    //           resources.push(article);
-    //           break;
-    //         case 'tutorial':
-    //           tutorials.push(article);
-    //           break;
-    //         case 'blog':
-    //           blogs.push(article);
-    //           break;
-    //         case 'podcast':
-    //           podcasts.push(article);
-    //           break;
-    //         default:
-    //           break;
-    //       }
-    //     });
-    //     this.setState({
-    //       resources,
-    //       tutorials,
-    //       blogs,
-    //       podcasts,
-    //     });
-    //   })
-    //   .catch(error => console.error('Error getting artciles', error));
+    this.getAllArticles();
 
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
