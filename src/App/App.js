@@ -7,7 +7,8 @@ import Auth from '../components/Auth/Auth';
 import authRequests from '../helpers/data/authRequests';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Profile from '../components/Profile/Profile';
-import Resources from '../components/Resources/Resources';
+import OutputForm from '../components/OutputForm/OutputForm';
+import InputForm from '../components/InputForm/InputForm';
 import Graph from '../components/Graph/Graph';
 
 import './App.scss';
@@ -77,11 +78,14 @@ class App extends Component {
       <div className="App">
         <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
         <div className="container-fluid">
-          <div className="row justify-content-around py-3">
+          <div className="main-output row justify-content-around py-3">
             <Profile gitHubUserName={gitHubUserName} gitHubAccessToken={gitHubAccessToken} />
-            <Resources />
+            <div className="resource-area col-md-8">
+              <InputForm />
+              <OutputForm />
+            </div>
           </div>
-          <div className="row">
+          <div className="graph-output row">
             <Graph />
           </div>
         </div>

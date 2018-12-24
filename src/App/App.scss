@@ -1,5 +1,14 @@
 @import '../styles/variables';
 
-.App {
-  text-align: center;
+html,
+body {
+  height: calc(100vh -56px);
 }
+
+.container-fluid {
+  height: 100%;
+}
+
+// .App {
+//   text-align: center;
+// }
