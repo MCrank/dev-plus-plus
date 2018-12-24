@@ -46,7 +46,7 @@ class OutputForm extends React.Component {
     return (
       <div className="OutputForm">
         <h4>Output Form Goes Here</h4>
-        <div className="container">
+        <div className="container-fluid">
           <Nav tabs>
             <NavItem>
               <NavLink
@@ -94,28 +94,28 @@ class OutputForm extends React.Component {
             <TabPane tabId="tutorials">
               <Row>
                 <Col sm="12">
-                  <ul>{tutorialItems}</ul>
+                  <ul className="p-0">{tutorialItems}</ul>
                 </Col>
               </Row>
             </TabPane>
             <TabPane tabId="blogs">
               <Row>
                 <Col sm="12">
-                  <ul>{blogItems}</ul>
+                  <ul className="p-0">{blogItems}</ul>
                 </Col>
               </Row>
             </TabPane>
             <TabPane tabId="resources">
               <Row>
                 <Col sm="12">
-                  <ul>{resourceItems}</ul>
+                  <ul className="p-0">{resourceItems}</ul>
                 </Col>
               </Row>
             </TabPane>
             <TabPane tabId="podcasts">
               <Row>
                 <Col sm="12">
-                  <ul>{podcastItems}</ul>
+                  <ul className="p-0">{podcastItems}</ul>
                 </Col>
               </Row>
             </TabPane>

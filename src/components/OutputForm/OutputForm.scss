@@ -1,9 +1,19 @@
 .OutputForm {
   height: 60%;
   width: 100%;
-  border: 1px blue solid;
+  // overflow: scroll;
+  // border: 1px blue solid;
+}
+
+.tab-content {
+  overflow: scroll;
 }
 
 .container {
-  border: 1px black solid;
+  // border: 1px black solid;
+}
+
+.nav-link.active {
+  background-color: #343a40 !important;
+  color: white !important;
 }

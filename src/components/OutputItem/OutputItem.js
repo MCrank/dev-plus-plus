@@ -25,19 +25,19 @@ class OutputItem extends React.Component {
       article = this.props.podcast;
     }
     return (
-      <li className="output-item m-2 align-items-center">
-        <span className="col-sm-4">{article.name}</span>
-        <span className="col-sm-5">
+      <li className="output-item my-2 align-items-center py-1">
+        <span className="col-md-4">{article.name}</span>
+        <span className="col-md-6">
           <a href={article.url} target="_blank" rel="noreferrer noopener">
             {article.url}
           </a>
         </span>
-        <span className="col-sm-2">
-          <button className="btn btn-default" onClick={this.deleteArticle}>
-            <i className="far fa-trash-alt" />
+        <span className="col-md-1">
+          <button className="del-button" type="button" onClick={this.deleteArticle}>
+            <i className="far fa-trash-alt fa-lg" />
           </button>
         </span>
-        <div className="form-check align-self-center">
+        <div className="col-md-1 form-check align-self-center">
           <input type="checkbox" className="form-check-input" id="complete-check" />
           <label className="form-check-label" htmlFor="complete-check">
             Done!

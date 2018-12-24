@@ -117,8 +117,7 @@ class InputForm extends React.Component {
                 name="articleRadios"
                 id="resources"
                 value="resource"
-                onClick={this.typeChange}
-                // onChange={this.typeChange}
+                onChange={this.typeChange}
               />
               <label className="form-check-label" htmlFor="resources">
                 Resource
