@@ -1,6 +1,13 @@
 .InputForm {
-  border: 1px red solid;
+  // border: 1px red solid;
 }
 .input-group-prepend {
   min-width: 12%;
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+.submit-button {
+  background-color: #343a40 !important;
+  color: white !important;
 }

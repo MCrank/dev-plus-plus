@@ -1,5 +1,21 @@
 .OutputForm {
-  height: 60%;
-  width: 100%;
-  border: 1px blue solid;
+  // height: 100%;
+}
+
+.conatiner-fluid {
+  // height: 100%;
+}
+
+.tab-content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.nav-link.active {
+  background-color: #343a40 !important;
+  color: white !important;
+}
+
+.nav-item {
+  cursor: pointer;
 }
