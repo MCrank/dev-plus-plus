@@ -38,17 +38,17 @@ class OutputItem extends React.Component {
   };
 
   render() {
-    let article = [];
-    this.getArticleType();
-    if (this.props.tutorial) {
-      article = this.props.tutorial;
-    } else if (this.props.resource) {
-      article = this.props.resource;
-    } else if (this.props.blog) {
-      article = this.props.blog;
-    } else if (this.props.podcast) {
-      article = this.props.podcast;
-    }
+    // let article = [];
+    const article = this.getArticleType();
+    // if (this.props.tutorial) {
+    //   article = this.props.tutorial;
+    // } else if (this.props.resource) {
+    //   article = this.props.resource;
+    // } else if (this.props.blog) {
+    //   article = this.props.blog;
+    // } else if (this.props.podcast) {
+    //   article = this.props.podcast;
+    // }
     return (
       <li className="output-item my-2 align-items-center py-1">
         <span className="col-md-4">{article.name}</span>
