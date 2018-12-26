@@ -38,15 +38,23 @@ class Graph extends React.Component {
     const { gitHubUserName, gitHubAccessToken } = this.props;
     if (gitHubUserName && gitHubAccessToken) {
       const initialUrl = `https://api.github.com/users/${gitHubUserName}/events/public`;
-      githubRequests
-        .getGitHubCommitsChart(initialUrl, [], gitHubAccessToken)
+      new Promise((resolve, reject) => {
+        githubRequests.getGitHubCommitsChart(initialUrl, [], gitHubAccessToken, resolve, reject);
+      })
         .then((gitHubChartData) => {
-          // const myGitHubEvents = [];
-          // myGitHubEvents.push(gitHubEvents);
           this.setState({ gitHubChartData });
         })
         .catch(error => console.error('There was an error getting the github events', error));
     }
+    // if (gitHubUserName && gitHubAccessToken) {
+    //   const initialUrl = `https://api.github.com/users/${gitHubUserName}/events/public`;
+    //   githubRequests
+    //     .getGitHubCommitsChart(initialUrl, [], gitHubAccessToken)
+    //     .then((gitHubChartData) => {
+    //       this.setState({ gitHubChartData });
+    //     })
+    //     .catch(error => console.error('There was an error getting the github events', error));
+    // }
   }
 
   render() {

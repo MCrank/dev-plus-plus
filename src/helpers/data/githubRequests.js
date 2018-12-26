@@ -31,7 +31,38 @@ const getGitHubCommits = (userName, accessToken) => new Promise((resolve, reject
     .catch(error => reject(error));
 });
 
-const getGitHubCommitsChart = (url, events, accessToken) => new Promise((resolve, reject) => {
+// const getGitHubCommitsChart = (url, events, accessToken) => new Promise((resolve, reject) => {
+//   axios
+//     .get(`${url}`, {
+//       headers: { Authorization: `token ${accessToken}` },
+//     })
+//     .then((result) => {
+//       const link = parse(result.headers.link);
+//       const pushEvents = events.concat(
+//         result.data.filter(
+//           gitHubEvent => gitHubEvent.type === 'PushEvent'
+//               && moment(gitHubEvent.created_at).isSameOrAfter(moment().subtract(60, 'days')),
+//         ),
+//       );
+//       if (link.next) {
+//         getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
+//       } else {
+//         //   const pushEventsData = [];
+//         //   for (let i = 0; i < pushEvents.length; i += 1) {
+//         //     const element = pushEvents[i];
+//         //     pushEventsData.push({
+//         //       date: moment(element.created_at).format('l'),
+//         //       commits: element.payload.commits.length,
+//         //     });
+//         //   }
+//         return Promise.resolve(pushEvents);
+//       }
+//       // resolve(pushEvents);
+//     })
+//     .catch(error => reject(error));
+// });
+
+const getGitHubCommitsChart = (url, events, accessToken, resolve, reject) => {
   axios
     .get(`${url}`, {
       headers: { Authorization: `token ${accessToken}` },
@@ -41,25 +72,24 @@ const getGitHubCommitsChart = (url, events, accessToken) => new Promise((resolve
       const pushEvents = events.concat(
         result.data.filter(
           gitHubEvent => gitHubEvent.type === 'PushEvent'
-              && moment(gitHubEvent.created_at).isSameOrAfter(moment().subtract(60, 'days')),
+            && moment(gitHubEvent.created_at).isSameOrAfter(moment().subtract(60, 'days')),
         ),
       );
       if (link.next) {
-        getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
+        getGitHubCommitsChart(link.next.url, pushEvents, accessToken, resolve, reject);
       } else {
-        //   const pushEventsData = [];
-        //   for (let i = 0; i < pushEvents.length; i += 1) {
-        //     const element = pushEvents[i];
-        //     pushEventsData.push({
-        //       date: moment(element.created_at).format('l'),
-        //       commits: element.payload.commits.length,
-        //     });
-        //   }
-        resolve(pushEvents);
+        const pushEventsData = [];
+        for (let i = 0; i < pushEvents.length; i += 1) {
+          const element = pushEvents[i];
+          pushEventsData.push({
+            date: moment(element.created_at).format('l'),
+            commits: element.payload.commits.length,
+          });
+        }
+        resolve(pushEventsData);
       }
-      // resolve(pushEvents);
     })
     .catch(error => reject(error));
-});
+};
 
 export default { getGitHubUser, getGitHubCommits, getGitHubCommitsChart };
