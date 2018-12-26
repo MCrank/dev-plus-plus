@@ -43,8 +43,13 @@ class OutputItem extends React.Component {
     event.preventDefault();
     const article = this.getArticleType();
     const { updateSingleArticle } = this.props;
-    article.isCompleted = true;
-    article.completedDate = moment().unix();
+    if (article.isCompleted) {
+      article.isCompleted = false;
+      article.completedDate = 0;
+    } else {
+      article.isCompleted = true;
+      article.completedDate = moment().unix();
+    }
     updateSingleArticle(article.id, article);
   };
 
@@ -69,7 +74,6 @@ class OutputItem extends React.Component {
             className="form-check-input"
             id="complete-check"
             checked={article.isCompleted}
-            disabled={article.isCompleted}
             onChange={this.completeArticle}
           />
           <label className="form-check-label" htmlFor="complete-check">
