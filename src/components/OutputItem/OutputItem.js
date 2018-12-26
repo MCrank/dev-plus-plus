@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import articleRequests from '../../helpers/data/articleRequests';
 import articleShape from '../../helpers/props/articleShape';
 
 import './OutputItem.scss';
@@ -11,10 +10,36 @@ class OutputItem extends React.Component {
     blog: articleShape,
     tutorial: articleShape,
     podcast: articleShape,
+    deleteSingleArticle: PropTypes.func,
+  };
+
+  getArticleType = () => {
+    // let article = [];
+    if (this.props.tutorial) {
+      return this.props.tutorial;
+    }
+    if (this.props.resource) {
+      return this.props.resource;
+    }
+    if (this.props.blog) {
+      return this.props.blog;
+    }
+    if (this.props.podcast) {
+      return this.props.podcast;
+    }
+    return null;
+  };
+
+  deleteArticle = (event) => {
+    event.preventDefault();
+    const article = this.getArticleType();
+    const { deleteSingleArticle } = this.props;
+    deleteSingleArticle(article.id);
   };
 
   render() {
     let article = [];
+    this.getArticleType();
     if (this.props.tutorial) {
       article = this.props.tutorial;
     } else if (this.props.resource) {
