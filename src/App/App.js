@@ -77,6 +77,7 @@ class App extends Component {
       .catch(error => console.error('Error posting new Article', error));
   };
 
+  // Get all of the articles and break them up into individual arrays based on type.
   getAllArticles = () => {
     articleRequests
       .getArticles(sessionStorage.getItem('uid'))
@@ -103,6 +104,12 @@ class App extends Component {
               break;
           }
         });
+        // Now sort the arrays so completed is at the bottom
+        tutorials.sort((a, b) => a.isCompleted - b.isCompleted);
+        resources.sort((a, b) => a.isCompleted - b.isCompleted);
+        blogs.sort((a, b) => a.isCompleted - b.isCompleted);
+        podcasts.sort((a, b) => a.isCompleted - b.isCompleted);
+        // Put each array by type in state
         this.setState({
           resources,
           tutorials,
@@ -113,6 +120,10 @@ class App extends Component {
       .catch(error => console.error('Error getting artciles', error));
   };
 
+  sortArticleArray = (arr) => {
+    arr.sort((a, b) => b - a);
+  };
+
   deleteArticle = (articleId) => {
     articleRequests
       .deleteArticle(articleId)
@@ -120,6 +131,15 @@ class App extends Component {
         this.getAllArticles();
       })
       .catch(error => console.error('There was an error deleteing the article', error));
+  };
+
+  completeArticle = (articleId, article) => {
+    articleRequests
+      .updateArticle(articleId, article)
+      .then(() => {
+        this.getAllArticles();
+      })
+      .catch(error => console.error('There was an error updating the article', error));
   };
 
   render() {
@@ -159,6 +179,7 @@ class App extends Component {
                 blogs={blogs}
                 podcasts={podcasts}
                 deleteSingleArticle={this.deleteArticle}
+                updateSingleArticle={this.completeArticle}
               />
             </div>
           </div>

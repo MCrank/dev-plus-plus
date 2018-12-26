@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import articleShape from '../../helpers/props/articleShape';
 
 import './OutputItem.scss';
@@ -11,6 +12,7 @@ class OutputItem extends React.Component {
     tutorial: articleShape,
     podcast: articleShape,
     deleteSingleArticle: PropTypes.func,
+    updateSingleArticle: PropTypes.func,
   };
 
   getArticleType = () => {
@@ -37,18 +39,22 @@ class OutputItem extends React.Component {
     deleteSingleArticle(article.id);
   };
 
-  render() {
-    let article = [];
-    this.getArticleType();
-    if (this.props.tutorial) {
-      article = this.props.tutorial;
-    } else if (this.props.resource) {
-      article = this.props.resource;
-    } else if (this.props.blog) {
-      article = this.props.blog;
-    } else if (this.props.podcast) {
-      article = this.props.podcast;
+  completeArticle = (event) => {
+    event.preventDefault();
+    const article = this.getArticleType();
+    const { updateSingleArticle } = this.props;
+    if (article.isCompleted) {
+      article.isCompleted = false;
+      article.completedDate = 0;
+    } else {
+      article.isCompleted = true;
+      article.completedDate = moment().unix();
     }
+    updateSingleArticle(article.id, article);
+  };
+
+  render() {
+    const article = this.getArticleType();
     return (
       <li className="output-item my-2 align-items-center py-1">
         <span className="col-md-4">{article.name}</span>
@@ -63,7 +69,13 @@ class OutputItem extends React.Component {
           </button>
         </span>
         <div className="col-md-1 form-check align-self-center">
-          <input type="checkbox" className="form-check-input" id="complete-check" />
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="complete-check"
+            checked={article.isCompleted}
+            onChange={this.completeArticle}
+          />
           <label className="form-check-label" htmlFor="complete-check">
             Done!
           </label>
