@@ -16,6 +16,7 @@ class OutputForm extends React.Component {
     podcasts: PropTypes.arrayOf(articleShape),
     tutorials: PropTypes.arrayOf(articleShape),
     resources: PropTypes.arrayOf(articleShape),
+    deleteSingleArticle: PropTypes.func,
   };
 
   state = {
@@ -30,17 +31,21 @@ class OutputForm extends React.Component {
 
   render() {
     const {
-      resources, blogs, tutorials, podcasts,
+      resources, blogs, tutorials, podcasts, deleteSingleArticle,
     } = this.props;
 
     // Hydrate our articles
-    const blogItems = blogs.map(blog => <OutputItem key={blog.id} blog={blog} />);
-    const podcastItems = podcasts.map(podcast => <OutputItem key={podcast.id} podcast={podcast} />);
+    const blogItems = blogs.map(blog => (
+      <OutputItem key={blog.id} blog={blog} deleteSingleArticle={deleteSingleArticle} />
+    ));
+    const podcastItems = podcasts.map(podcast => (
+      <OutputItem key={podcast.id} podcast={podcast} deleteSingleArticle={deleteSingleArticle} />
+    ));
     const tutorialItems = tutorials.map(tutorial => (
-      <OutputItem key={tutorial.id} tutorial={tutorial} />
+      <OutputItem key={tutorial.id} tutorial={tutorial} deleteSingleArticle={deleteSingleArticle} />
     ));
     const resourceItems = resources.map(resource => (
-      <OutputItem key={resource.id} resource={resource} />
+      <OutputItem key={resource.id} resource={resource} deleteSingleArticle={deleteSingleArticle} />
     ));
 
     return (

@@ -21,4 +21,6 @@ const getArticles = uid => new Promise((resolve, reject) => {
 
 const postRequest = article => axios.post(`${fireBaseUrl}/articles.json`, article);
 
-export default { getArticles, postRequest };
+const deleteArticle = articleId => axios.delete(`${fireBaseUrl}/articles/${articleId}.json`);
+
+export default { getArticles, postRequest, deleteArticle };
