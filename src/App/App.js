@@ -122,6 +122,15 @@ class App extends Component {
       .catch(error => console.error('There was an error deleteing the article', error));
   };
 
+  completeArticle = (articleId, article) => {
+    articleRequests
+      .updateArticle(articleId, article)
+      .then(() => {
+        this.getAllArticles();
+      })
+      .catch(error => console.error('There was an error updating the article', error));
+  };
+
   render() {
     const {
       gitHubUserName, gitHubAccessToken, resources, tutorials, blogs, podcasts,
@@ -159,6 +168,7 @@ class App extends Component {
                 blogs={blogs}
                 podcasts={podcasts}
                 deleteSingleArticle={this.deleteArticle}
+                updateSingleArticle={this.completeArticle}
               />
             </div>
           </div>
