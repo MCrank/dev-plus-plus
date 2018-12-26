@@ -1,4 +1,6 @@
 import axios from 'axios';
+import parse from 'parse-link-header';
+import moment from 'moment';
 import apiKeys from '../apiKeys';
 
 const gitHubApiUrl = apiKeys.githubApi.apiUrl;
@@ -28,4 +30,42 @@ const getGitHubCommits = (userName, accessToken) => new Promise((resolve, reject
     })
     .catch(error => reject(error));
 });
-export default { getGitHubUser, getGitHubCommits };
+
+const getGitHubCommitsChart = (url, events, accessToken) => new Promise((resolve, reject) => {
+  axios
+    .get(`${url}`, {
+      headers: { Authorization: `token ${accessToken}` },
+    })
+    .then((result) => {
+      const link = parse(result.headers.link);
+      const pushEvents = events.concat(
+        result.data.filter(
+          gitHubEvent => gitHubEvent.type === 'PushEvent'
+              && moment(gitHubEvent.created_at).isSameOrAfter(moment().subtract(60, 'days')),
+        ),
+      );
+      // do {
+      //   getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
+      // } while (link.next);
+      // while (link.next) {
+      //   getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
+      // }
+      // if (link.next) {
+      //   getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
+      // } else {
+      //   //   const pushEventsData = [];
+      //   //   for (let i = 0; i < pushEvents.length; i += 1) {
+      //   //     const element = pushEvents[i];
+      //   //     pushEventsData.push({
+      //   //       date: moment(element.created_at).format('l'),
+      //   //       commits: element.payload.commits.length,
+      //   //     });
+      //   //   }
+      //   resolve(pushEvents);
+      // }
+      resolve(pushEvents);
+    })
+    .catch(error => reject(error));
+});
+
+export default { getGitHubUser, getGitHubCommits, getGitHubCommitsChart };
