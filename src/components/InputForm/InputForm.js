@@ -18,6 +18,7 @@ class InputForm extends React.Component {
 
   state = {
     newArticle: defaultArticle,
+    radioChecked: false,
   };
 
   formFieldStringState = (value, event) => {
@@ -39,7 +40,10 @@ class InputForm extends React.Component {
 
   urlChange = event => this.formFieldStringState('url', event);
 
-  typeChange = event => this.formFieldStringState('type', event);
+  typeChange = (event) => {
+    this.setState({ radioChecked: event.target.value });
+    this.formFieldStringState('type', event);
+  };
 
   formSubmit = (event) => {
     event.preventDefault();
@@ -47,11 +51,11 @@ class InputForm extends React.Component {
     const newArticle = { ...this.state.newArticle };
     newArticle.uid = authRequests.getCurrentUid();
     onSubmit(newArticle);
-    this.setState({ newArticle: defaultArticle });
+    this.setState({ newArticle: defaultArticle, radioChecked: false });
   };
 
   render() {
-    const { newArticle } = this.state;
+    const { newArticle, radioChecked } = this.state;
     return (
       <div className="InputForm">
         <h4>Add Resource</h4>
@@ -91,6 +95,7 @@ class InputForm extends React.Component {
                 name="articleRadios"
                 id="tutorials"
                 value="tutorial"
+                checked={radioChecked === 'tutorial'}
                 onChange={this.typeChange}
               />
               <label className="form-check-label" htmlFor="tutorials">
@@ -104,6 +109,7 @@ class InputForm extends React.Component {
                 name="articleRadios"
                 id="blogs"
                 value="blog"
+                checked={radioChecked === 'blog'}
                 onChange={this.typeChange}
               />
               <label className="form-check-label" htmlFor="blogs">
@@ -117,6 +123,7 @@ class InputForm extends React.Component {
                 name="articleRadios"
                 id="resources"
                 value="resource"
+                checked={radioChecked === 'resource'}
                 onChange={this.typeChange}
               />
               <label className="form-check-label" htmlFor="resources">
@@ -130,6 +137,7 @@ class InputForm extends React.Component {
                 name="articleRadios"
                 id="podcasts"
                 value="podcast"
+                checked={radioChecked === 'podcast'}
                 onChange={this.typeChange}
               />
               <label className="form-check-label" htmlFor="podcasts">
