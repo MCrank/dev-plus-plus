@@ -44,26 +44,20 @@ const getGitHubCommitsChart = (url, events, accessToken) => new Promise((resolve
               && moment(gitHubEvent.created_at).isSameOrAfter(moment().subtract(60, 'days')),
         ),
       );
-      // do {
-      //   getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
-      // } while (link.next);
-      // while (link.next) {
-      //   getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
-      // }
-      // if (link.next) {
-      //   getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
-      // } else {
-      //   //   const pushEventsData = [];
-      //   //   for (let i = 0; i < pushEvents.length; i += 1) {
-      //   //     const element = pushEvents[i];
-      //   //     pushEventsData.push({
-      //   //       date: moment(element.created_at).format('l'),
-      //   //       commits: element.payload.commits.length,
-      //   //     });
-      //   //   }
-      //   resolve(pushEvents);
-      // }
-      resolve(pushEvents);
+      if (link.next) {
+        getGitHubCommitsChart(link.next.url, pushEvents, accessToken);
+      } else {
+        //   const pushEventsData = [];
+        //   for (let i = 0; i < pushEvents.length; i += 1) {
+        //     const element = pushEvents[i];
+        //     pushEventsData.push({
+        //       date: moment(element.created_at).format('l'),
+        //       commits: element.payload.commits.length,
+        //     });
+        //   }
+        resolve(pushEvents);
+      }
+      // resolve(pushEvents);
     })
     .catch(error => reject(error));
 });
