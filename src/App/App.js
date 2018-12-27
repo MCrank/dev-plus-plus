@@ -184,7 +184,14 @@ class App extends Component {
             </div>
           </div>
           <div className="graph-output row">
-            <Graph />
+            <Graph
+              gitHubUserName={gitHubUserName}
+              gitHubAccessToken={gitHubAccessToken}
+              tutorials={tutorials}
+              resources={resources}
+              blogs={blogs}
+              podcasts={podcasts}
+            />
           </div>
         </div>
       </div>

@@ -10,12 +10,14 @@
     "firebase": "^5.7.0",
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
+    "parse-link-header": "^1.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
     "react-social-login-buttons": "^2.3.0",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^6.5.0",
+    "recharts": "^1.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
