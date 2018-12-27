@@ -30,7 +30,7 @@ class Profile extends React.Component {
               this.setState({ gitHubCommitCount });
             });
         })
-        .catch(error => console.error('There was an error getting the  github user info', error));
+        .catch(error => console.error('There was an error getting the github user info', error));
     }
   }
 
