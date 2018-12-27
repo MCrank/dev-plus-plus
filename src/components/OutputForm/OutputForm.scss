@@ -1,3 +1,13 @@
+@import '../../styles/variables';
+
+.OutputForm {
+  font-family: $headingFont;
+}
+.output-title {
+  text-align: center;
+  text-decoration: underline;
+}
+
 .tab-content {
   height: 315px;
   max-height: 315px;

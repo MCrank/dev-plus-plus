@@ -69,7 +69,7 @@ class OutputForm extends React.Component {
 
     return (
       <div className="OutputForm">
-        <h4>Your Development Articles</h4>
+        <h4 className="output-title">Your Articles</h4>
         <div className="output-data container-fluid">
           <Nav tabs>
             <NavItem>

@@ -189,6 +189,7 @@ class App extends Component {
             <Profile gitHubUserName={gitHubUserName} gitHubAccessToken={gitHubAccessToken} />
             <div className="resource-area col-md-8">
               <InputForm onSubmit={this.formSubmitEvent} />
+              <hr />
               <OutputForm
                 tutorials={tutorials}
                 resources={resources}
@@ -201,6 +202,7 @@ class App extends Component {
               />
             </div>
           </div>
+          <hr />
           <div className="graph-output row">
             <Graph
               gitHubUserName={gitHubUserName}

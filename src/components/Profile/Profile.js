@@ -38,6 +38,7 @@ class Profile extends React.Component {
     const { gitHubProfile, gitHubCommitCount } = this.state;
     return (
       <div className="Profile col-md-4">
+        <h4 className="profile-title">Github Profile</h4>
         <Card>
           <CardImg
             top

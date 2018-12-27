@@ -1,9 +1,19 @@
+@import '../../styles/variables';
+
+.Profile {
+  font-family: $headingFont;
+}
+.profile-title {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 20px;
+}
 .card {
   border: 0 !important;
   text-align: center;
 }
 
 img {
-  border-radius: 50% !important;
-  width: 50% !important;
+  border-radius: 3% !important;
+  width: 40% !important;
 }
