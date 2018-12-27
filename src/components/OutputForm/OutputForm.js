@@ -99,7 +99,6 @@ class OutputForm extends React.Component {
                 Blogs
               </NavLink>
             </NavItem>
-
             <NavItem>
               <NavLink
                 className={classnames({ active: this.state.activeTab === 'resources' })}
