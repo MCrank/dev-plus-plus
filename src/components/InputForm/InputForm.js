@@ -58,8 +58,8 @@ class InputForm extends React.Component {
     const { newArticle, radioChecked } = this.state;
     return (
       <div className="InputForm">
-        <h4>Add Resource</h4>
-        <form className="row m-4 justify-content-center" onSubmit={this.formSubmit}>
+        <h4 className="input-title">Add Article</h4>
+        <form className="row m-2 justify-content-center" onSubmit={this.formSubmit}>
           <div className="form-group col-md-7">
             {/* <label htmlFor="name">Name:</label> */}
             <div className="input-group">

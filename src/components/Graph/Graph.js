@@ -19,6 +19,10 @@ import './Graph.scss';
 class Graph extends React.Component {
   state = {
     gitHubChartData: [],
+    opacity: {
+      articleCount: 1,
+      commits: 1,
+    },
   };
 
   static propTypes = {
@@ -36,20 +40,24 @@ class Graph extends React.Component {
     } = this.props;
 
     if (gitHubUserName && gitHubAccessToken) {
+      // Go get github commits (Paginate to get what Guthub will give me)
       const initialUrl = `https://api.github.com/users/${gitHubUserName}/events/public`;
       new Promise((resolve, reject) => {
         githubRequests.getGitHubCommitsChart(initialUrl, [], gitHubAccessToken, resolve, reject);
       })
         .then((gitHubChartData) => {
+          // Okay got the commits now lets grab the last 60 days of completed articles from state
           const sixty = moment().subtract(60, 'days');
-          [...blogs, ...tutorials, ...podcasts, ...resources].forEach((x) => {
-            const eventDate = moment.unix(x.completedDate).format('L');
-            const o = gitHubChartData.find(y => y.date === eventDate);
-
-            if (x.isCompleted && moment(eventDate, 'L').isAfter(sixty)) {
-              if (o) {
-                o.articleCount += 1;
+          [...blogs, ...tutorials, ...podcasts, ...resources].forEach((article) => {
+            const eventDate = moment.unix(article.completedDate).format('L');
+            const chartDateExists = gitHubChartData.find(y => y.date === eventDate);
+            // Check if the article is complete and falls after our sixt day window
+            if (article.isCompleted && moment(eventDate, 'L').isAfter(sixty)) {
+              // If there is already a date just increment article count
+              if (chartDateExists) {
+                chartDateExists.articleCount += 1;
               } else {
+                // Article not complete so leave count alone
                 gitHubChartData.push({
                   date: eventDate,
                   commits: 0,
@@ -64,16 +72,38 @@ class Graph extends React.Component {
     }
   }
 
+  handleMouseEnter(o) {
+    const { dataKey } = o;
+    const { opacity } = this.state;
+
+    this.setState({
+      opacity: { ...opacity, [dataKey]: 0.1 },
+    });
+  }
+
+  handleMouseLeave(o) {
+    const { dataKey } = o;
+    const { opacity } = this.state;
+
+    this.setState({
+      opacity: { ...opacity, [dataKey]: 1 },
+    });
+  }
+
   render() {
-    const { gitHubChartData } = this.state;
+    const { gitHubChartData, opacity } = this.state;
+
     return (
-      <div className="Graph col">
-        <h2>Graph goes here</h2>
+      <div className="graph col">
+        <div className="col-md-4">
+          <h3 className="graph-title">Profile Metrics</h3>
+        </div>
         <ResponsiveContainer width="100%" height={250}>
           <AreaChart
             data={gitHubChartData}
+            height={250}
             margin={{
-              top: 10,
+              top: 30,
               right: 30,
               left: 0,
               bottom: 0,
@@ -92,23 +122,32 @@ class Graph extends React.Component {
             <XAxis dataKey="date" />
             <YAxis />
             <CartesianGrid strokeDasharray="3 3" />
-            <Legend />
-            <Tooltip />
-            <Area
-              type="monotone"
-              name="Commits"
-              dataKey="commits"
-              stroke="#8884d8"
-              fillOpacity={1}
-              fill="url(#colorUv)"
+            <Legend
+              verticalAlign="top"
+              onMouseEnter={this.handleMouseEnter.bind(this)}
+              onMouseLeave={this.handleMouseLeave.bind(this)}
+              wrapperStyle={{
+                marginBottom: '5px',
+              }}
             />
+            <Tooltip />
             <Area
               type="monotone"
               name="Artciles Completed"
               dataKey="articleCount"
+              strokeOpacity={opacity.commits}
               stroke="#82ca9d"
               fillOpacity={1}
               fill="url(#colorPv)"
+            />
+            <Area
+              type="monotone"
+              name="Commits"
+              dataKey="commits"
+              strokeOpacity={opacity.articleCount}
+              stroke="#8884d8"
+              fillOpacity={1}
+              fill="url(#colorUv)"
             />
           </AreaChart>
         </ResponsiveContainer>

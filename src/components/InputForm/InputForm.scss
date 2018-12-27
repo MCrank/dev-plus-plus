@@ -1,6 +1,18 @@
+@import '../../styles/variables';
+
 .InputForm {
-  // border: 1px red solid;
+  font-family: $headingFont;
 }
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.input-title {
+  text-align: center;
+  text-decoration: underline;
+}
+
 .input-group-prepend {
   min-width: 12%;
   background-color: #343a40 !important;

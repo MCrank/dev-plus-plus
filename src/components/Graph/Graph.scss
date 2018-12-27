@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.graph {
+  font-family: $headingFont;
+}
+
+.graph-title {
+  margin-bottom: 0;
+  // margin-left: 55px;
+  text-align: center;
+  text-decoration: underline;
+}
+.recharts-cartesian-axis {
+  font-size: 14px;
+}
