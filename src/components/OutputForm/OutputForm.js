@@ -16,19 +16,10 @@ class OutputForm extends React.Component {
     podcasts: PropTypes.arrayOf(articleShape),
     tutorials: PropTypes.arrayOf(articleShape),
     resources: PropTypes.arrayOf(articleShape),
+    toggleTab: PropTypes.func,
     deleteSingleArticle: PropTypes.func,
     updateSingleArticle: PropTypes.func,
   };
-
-  state = {
-    activeTab: 'tutorials',
-  };
-
-  toggle(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({ activeTab: tab });
-    }
-  }
 
   render() {
     const {
@@ -36,6 +27,8 @@ class OutputForm extends React.Component {
       blogs,
       tutorials,
       podcasts,
+      activeTab,
+      toggleTab,
       deleteSingleArticle,
       updateSingleArticle,
     } = this.props;
@@ -81,9 +74,9 @@ class OutputForm extends React.Component {
           <Nav tabs>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === 'tutorials' })}
+                className={classnames({ active: activeTab === 'tutorial' })}
                 onClick={() => {
-                  this.toggle('tutorials');
+                  toggleTab('tutorial');
                 }}
               >
                 Tutorials
@@ -91,9 +84,9 @@ class OutputForm extends React.Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === 'blogs' })}
+                className={classnames({ active: activeTab === 'blog' })}
                 onClick={() => {
-                  this.toggle('blogs');
+                  toggleTab('blog');
                 }}
               >
                 Blogs
@@ -101,9 +94,9 @@ class OutputForm extends React.Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === 'resources' })}
+                className={classnames({ active: activeTab === 'resource' })}
                 onClick={() => {
-                  this.toggle('resources');
+                  toggleTab('resource');
                 }}
               >
                 Resources
@@ -111,38 +104,38 @@ class OutputForm extends React.Component {
             </NavItem>
             <NavItem>
               <NavLink
-                className={classnames({ active: this.state.activeTab === 'podcasts' })}
+                className={classnames({ active: activeTab === 'podcast' })}
                 onClick={() => {
-                  this.toggle('podcasts');
+                  toggleTab('podcast');
                 }}
               >
                 Podcasts
               </NavLink>
             </NavItem>
           </Nav>
-          <TabContent activeTab={this.state.activeTab} className="mx-auto">
-            <TabPane tabId="tutorials">
+          <TabContent activeTab={activeTab} className="mx-auto">
+            <TabPane tabId="tutorial">
               <Row>
                 <Col sm="12">
                   <ul className="p-0">{tutorialItems}</ul>
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tabId="blogs">
+            <TabPane tabId="blog">
               <Row>
                 <Col sm="12">
                   <ul className="p-0">{blogItems}</ul>
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tabId="resources">
+            <TabPane tabId="resource">
               <Row>
                 <Col sm="12">
                   <ul className="p-0">{resourceItems}</ul>
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tabId="podcasts">
+            <TabPane tabId="podcast">
               <Row>
                 <Col sm="12">
                   <ul className="p-0">{podcastItems}</ul>

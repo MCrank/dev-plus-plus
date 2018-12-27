@@ -1,68 +1,192 @@
 {
   "articles": {
-    "article1": {
-      "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
-      "type": "resource",
+    "-LUVG_fZoSfFfFlwTXA3": {
+      "completedDate": 1545870147,
+      "id": "-LUVG_fZoSfFfFlwTXA3",
+      "isCompleted": true,
+      "name": "Yet Another Tutorial",
+      "type": "tutorial",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "http://"
+    },
+    "-LUVgOdY5HISrbgpptqk": {
+      "completedDate": 0,
       "isCompleted": false,
+      "name": "New Resource",
+      "type": "resource",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "http://bing.com"
+    },
+    "-LUWoOSeN-g2Fl_zopt0": {
+      "completedDate": 1545881293,
+      "id": "-LUWoOSeN-g2Fl_zopt0",
+      "isCompleted": true,
+      "name": "My Awesome Tutorial",
+      "type": "tutorial",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "http://neowin.net"
+    },
+    "-LUcDvf5RaikWs3LeKzb": {
+      "completedDate": 0,
+      "id": "-LUcDvf5RaikWs3LeKzb",
+      "isCompleted": false,
+      "name": "Holy Smokes",
+      "type": "podcast",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://hoysmokes.com"
+    },
+    "-LUcE2DIoFU02Kk-Pflr": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Yet another podcast",
+      "type": "",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://yapc.com"
+    },
+    "-LUcTOh2BIDlxkb4PFzW": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Test Radio",
+      "type": "podcast",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://testradio.com"
+    },
+    "-LUcTdHQi2CJLpAAUDla": {
+      "completedDate": 1544421600,
+      "isCompleted": true,
+      "name": "One Cool Blog",
+      "type": "blog",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://myblog.com"
+    },
+    "-LUi4nY77NfWxh0OyDMQ": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Super Blog",
+      "type": "blog",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "http://superblogs.com"
+    },
+    "-LUi5BdjoaFWSHZHHQu8": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Super Podcast",
+      "type": "podcast",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://superpodcast"
+    },
+    "-LUi5Xo7t5lJWRDY8G3f": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Super Cool Resource",
+      "type": "resource",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://supercooolresource.com"
+    },
+    "-LUi5nv1aXkAV3zFu5iU": {
+      "completedDate": 1545372000,
+      "isCompleted": true,
+      "name": "Wes Bos",
+      "type": "resource",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://wesbos.com/"
+    },
+    "-LUi5zL-oRMgIcsC-sl6": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Coding Blocks",
+      "type": "podcast",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://www.codingblocks.net/category/podcast/"
+    },
+    "-LUi67wBpIIi7RE8kP4G": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Coding Newbie",
+      "type": "podcast",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://www.codenewbie.org/podcast"
+    },
+    "-LUi6_Pvr-EL_MpPQt_3": {
+      "completedDate": 1544421600,
+      "isCompleted": true,
+      "name": "CSharpFritz (Twitch)",
+      "type": "tutorial",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://www.twitch.tv/csharpfritz"
+    },
+    "-LUi6m6aBnEXxH_Y_dVl": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Jeff Atwood",
+      "type": "blog",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://blog.codinghorror.com/"
+    },
+    "-LUi6whdlmJWGp6OXyDO": {
+      "completedDate": 1544421600,
+      "isCompleted": true,
+      "name": "Scott Hansleman",
+      "type": "blog",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://www.hanselman.com/blog/"
+    },
+    "-LUi7HQVDyOi4NyfUcpY": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "ASP.NET Blogs",
+      "type": "blog",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://weblogs.asp.net/"
+    },
+    "article1": {
       "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+      "isCompleted": false,
+      "name": "CSS Tricks",
+      "type": "resource",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://css-tricks.com/"
     },
     "article2": {
-      "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
-      "type": "resource",
-      "isCompleted": true,
       "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+      "isCompleted": true,
+      "name": "CSS Tricks",
+      "type": "resource",
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://css-tricks.com/"
     },
     "article3": {
-      "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
-      "type": "tutorial",
+      "completedDate": 0,
+      "id": "article3",
       "isCompleted": false,
-      "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
-    },
-    "article4": {
       "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
       "type": "tutorial",
-      "isCompleted": true,
-      "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://css-tricks.com/"
     },
     "article5": {
-      "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
-      "type": "blog",
+      "completedDate": 1545447594,
       "isCompleted": false,
-      "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
-    },
-    "article6": {
       "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
       "type": "blog",
-      "isCompleted": true,
-      "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "url": "https://css-tricks.com/"
     },
     "article7": {
-      "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
-      "type": "podcast",
-      "isCompleted": false,
       "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+      "isCompleted": false,
+      "name": "CSS Tricks",
+      "type": "podcast",
+      "uid": "",
+      "url": "https://css-tricks.com/"
     },
     "article8": {
-      "name": "CSS Tricks",
-      "url": "https://css-tricks.com/",
-      "type": "podcast",
-      "isCompleted": true,
       "completedDate": 1545447594,
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1"
+      "isCompleted": true,
+      "name": "CSS Tricks",
+      "type": "podcast",
+      "uid": "",
+      "url": "https://css-tricks.com/"
     }
   }
 }
