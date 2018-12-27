@@ -8,6 +8,7 @@ const apiKeys = {
     messagingSenderId: '',
   },
   githubApi: {
+    apiUrl: 'https://api.github.com',
     client_id: '',
     client_secret: '',
   },
