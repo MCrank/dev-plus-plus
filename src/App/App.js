@@ -20,6 +20,7 @@ class App extends Component {
     uid: '',
     gitHubUserName: '',
     gitHubAccessToken: '',
+    activeTab: 'tutorial',
     resources: [],
     tutorials: [],
     blogs: [],
@@ -68,11 +69,19 @@ class App extends Component {
     sessionStorage.setItem('gitHubAccessToken', accessToken);
   };
 
+  toggleTab = (tab) => {
+    const currentTab = this.state.activeTab;
+    if (currentTab !== tab) {
+      this.setState({ activeTab: tab });
+    }
+  };
+
   formSubmitEvent = (newArticle) => {
     articleRequests
       .postRequest(newArticle)
       .then(() => {
         this.getAllArticles();
+        this.toggleTab(newArticle.type);
       })
       .catch(error => console.error('Error posting new Article', error));
   };
@@ -144,8 +153,15 @@ class App extends Component {
 
   render() {
     const {
-      gitHubUserName, gitHubAccessToken, resources, tutorials, blogs, podcasts,
+      gitHubUserName,
+      gitHubAccessToken,
+      resources,
+      tutorials,
+      blogs,
+      podcasts,
+      activeTab,
     } = this.state;
+
     const logoutClickEvent = () => {
       authRequests.logoutUser();
       sessionStorage.clear();
@@ -178,6 +194,8 @@ class App extends Component {
                 resources={resources}
                 blogs={blogs}
                 podcasts={podcasts}
+                activeTab={activeTab}
+                toggleTab={this.toggleTab}
                 deleteSingleArticle={this.deleteArticle}
                 updateSingleArticle={this.completeArticle}
               />
