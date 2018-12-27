@@ -1,150 +1,206 @@
 {
   "articles": {
-    "-LUVG_fZoSfFfFlwTXA3": {
-      "completedDate": 1545870147,
-      "id": "-LUVG_fZoSfFfFlwTXA3",
+    "article9": {
+      "completedDate": 1544421600,
       "isCompleted": true,
-      "name": "Yet Another Tutorial",
-      "type": "tutorial",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
-      "url": "http://"
-    },
-    "-LUVgOdY5HISrbgpptqk": {
-      "completedDate": 0,
-      "isCompleted": false,
       "name": "New Resource",
       "type": "resource",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "http://bing.com"
     },
-    "-LUWoOSeN-g2Fl_zopt0": {
+    "article10": {
       "completedDate": 1545881293,
       "id": "-LUWoOSeN-g2Fl_zopt0",
       "isCompleted": true,
-      "name": "My Awesome Tutorial",
+      "name": "Neowin",
       "type": "tutorial",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "http://neowin.net"
     },
-    "-LUcDvf5RaikWs3LeKzb": {
+    "article11": {
       "completedDate": 0,
       "id": "-LUcDvf5RaikWs3LeKzb",
       "isCompleted": false,
       "name": "Holy Smokes",
       "type": "podcast",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://hoysmokes.com"
     },
-    "-LUcE2DIoFU02Kk-Pflr": {
+    "article12": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Yet another podcast",
       "type": "",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://yapc.com"
     },
-    "-LUcTOh2BIDlxkb4PFzW": {
-      "completedDate": 0,
-      "isCompleted": false,
+    "article13": {
+      "completedDate": 1545372000,
+      "id": "-LUcTOh2BIDlxkb4PFzW",
+      "isCompleted": true,
       "name": "Test Radio",
       "type": "podcast",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://testradio.com"
     },
-    "-LUcTdHQi2CJLpAAUDla": {
+    "article14": {
       "completedDate": 1544421600,
       "isCompleted": true,
       "name": "One Cool Blog",
       "type": "blog",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://myblog.com"
     },
-    "-LUi4nY77NfWxh0OyDMQ": {
+    "article15": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Super Blog",
       "type": "blog",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "http://superblogs.com"
     },
-    "-LUi5BdjoaFWSHZHHQu8": {
+    "article16": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Super Podcast",
       "type": "podcast",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://superpodcast"
     },
-    "-LUi5Xo7t5lJWRDY8G3f": {
+    "article17": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Super Cool Resource",
       "type": "resource",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://supercooolresource.com"
     },
-    "-LUi5nv1aXkAV3zFu5iU": {
+    "article18": {
       "completedDate": 1545372000,
       "isCompleted": true,
       "name": "Wes Bos",
       "type": "resource",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://wesbos.com/"
     },
-    "-LUi5zL-oRMgIcsC-sl6": {
+    "article19": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Coding Blocks",
       "type": "podcast",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://www.codingblocks.net/category/podcast/"
     },
-    "-LUi67wBpIIi7RE8kP4G": {
+    "article20": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Coding Newbie",
       "type": "podcast",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://www.codenewbie.org/podcast"
     },
-    "-LUi6_Pvr-EL_MpPQt_3": {
+    "article21": {
       "completedDate": 1544421600,
       "isCompleted": true,
       "name": "CSharpFritz (Twitch)",
       "type": "tutorial",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://www.twitch.tv/csharpfritz"
     },
-    "-LUi6m6aBnEXxH_Y_dVl": {
+    "article22": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "Jeff Atwood",
       "type": "blog",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://blog.codinghorror.com/"
     },
-    "-LUi6whdlmJWGp6OXyDO": {
+    "article23": {
       "completedDate": 1544421600,
       "isCompleted": true,
       "name": "Scott Hansleman",
       "type": "blog",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://www.hanselman.com/blog/"
     },
-    "-LUi7HQVDyOi4NyfUcpY": {
+    "article24": {
       "completedDate": 0,
       "isCompleted": false,
       "name": "ASP.NET Blogs",
       "type": "blog",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://weblogs.asp.net/"
+    },
+    "article25": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Complete Guide to Flexbox",
+      "type": "tutorial",
+      "uid": "",
+      "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+    },
+    "article26": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Flexbox Froggy",
+      "type": "tutorial",
+      "uid": "",
+      "url": "http://flexboxfroggy.com/"
+    },
+    "article27": {
+      "completedDate": 1544421600,
+      "isCompleted": true,
+      "name": "Team Treehouse",
+      "type": "resource",
+      "uid": "",
+      "url": "https://teamtreehouse.com/"
+    },
+    "article28": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Pluralsight",
+      "type": "resource",
+      "uid": "",
+      "url": "https://www.pluralsight.com/"
+    },
+    "article29": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Sass",
+      "type": "resource",
+      "uid": "",
+      "url": "https://sass-lang.com/"
+    },
+    "article30": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "React Strap",
+      "type": "resource",
+      "uid": "",
+      "url": "https://reactstrap.github.io/"
+    },
+    "article31": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "DotNet Rocks",
+      "type": "podcast",
+      "uid": "",
+      "url": "https://www.stitcher.com/podcast/net-rocks"
+    },
+    "article32": {
+      "completedDate": 0,
+      "isCompleted": false,
+      "name": "Javscript Promises",
+      "type": "tutorial",
+      "uid": "",
+      "url": "https://www.youtube.com/watch?v=4EuwgnnXRPI"
     },
     "article1": {
       "completedDate": 1545447594,
       "isCompleted": false,
       "name": "CSS Tricks",
       "type": "resource",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://css-tricks.com/"
     },
     "article2": {
@@ -152,7 +208,7 @@
       "isCompleted": true,
       "name": "CSS Tricks",
       "type": "resource",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://css-tricks.com/"
     },
     "article3": {
@@ -161,7 +217,7 @@
       "isCompleted": false,
       "name": "CSS Tricks",
       "type": "tutorial",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://css-tricks.com/"
     },
     "article5": {
@@ -169,7 +225,7 @@
       "isCompleted": false,
       "name": "CSS Tricks",
       "type": "blog",
-      "uid": "n8eR2rwzv5Q7lpuWYxKSFwThj9u1",
+      "uid": "",
       "url": "https://css-tricks.com/"
     },
     "article7": {
