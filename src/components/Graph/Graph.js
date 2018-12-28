@@ -133,7 +133,7 @@ class Graph extends React.Component {
             <Tooltip />
             <Area
               type="monotone"
-              name="Artciles Completed"
+              name="Articles Completed"
               dataKey="articleCount"
               strokeOpacity={opacity.commits}
               stroke="#82ca9d"
