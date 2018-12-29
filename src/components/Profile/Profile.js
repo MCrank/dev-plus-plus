@@ -4,17 +4,18 @@ import {
   Card, CardBody, CardTitle, CardText, CardImg,
 } from 'reactstrap';
 import githubRequests from '../../helpers/data/githubRequests';
+
 import './Profile.scss';
 
 class Profile extends React.Component {
   state = {
     gitHubProfile: [],
-    gitHubCommitCount: 0,
   };
 
   static propTypes = {
     gitHubUserName: PropTypes.string,
     gitHubAccessToken: PropTypes.string,
+    gitHubCommitCount: PropTypes.number,
   };
 
   componentDidMount() {
@@ -24,18 +25,14 @@ class Profile extends React.Component {
         .getGitHubUser(gitHubUserName, gitHubAccessToken)
         .then((gitHubProfile) => {
           this.setState({ gitHubProfile });
-          githubRequests
-            .getGitHubCommits(gitHubUserName, gitHubAccessToken)
-            .then((gitHubCommitCount) => {
-              this.setState({ gitHubCommitCount });
-            });
         })
         .catch(error => console.error('There was an error getting the github user info', error));
     }
   }
 
   render() {
-    const { gitHubProfile, gitHubCommitCount } = this.state;
+    const { gitHubProfile } = this.state;
+    const { gitHubCommitCount } = this.props;
     return (
       <div className="Profile col-md-4">
         <h4 className="profile-title">Github Profile</h4>

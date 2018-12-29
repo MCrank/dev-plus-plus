@@ -28,6 +28,7 @@ class App extends Component {
     blogs: [],
     podcasts: [],
     gitHubChartData: [],
+    gitHubCommitCount: 0,
   };
 
   componentDidMount() {
@@ -162,6 +163,7 @@ class App extends Component {
     const {
       blogs, tutorials, podcasts, resources, gitHubAccessToken, gitHubUserName,
     } = this.state;
+
     // Go get github commits (Paginate to get what Guthub will give me)
     const initialUrl = `https://api.github.com/users/${gitHubUserName}/events/public`;
     new Promise((resolve, reject) => {
@@ -188,6 +190,14 @@ class App extends Component {
             }
           }
         });
+        const fiveDays = moment().subtract(5, 'days');
+        let commitCounter = 0;
+        gitHubChartData.forEach((chartObject) => {
+          if (moment(chartObject.date).isAfter(fiveDays)) {
+            commitCounter += chartObject.commits;
+          }
+        });
+        this.setState({ gitHubCommitCount: commitCounter });
         this.setState({ gitHubChartData });
       })
       .catch(error => console.error('There was an error getting the github events', error));
@@ -203,6 +213,7 @@ class App extends Component {
       podcasts,
       activeTab,
       gitHubChartData,
+      gitHubCommitCount,
     } = this.state;
 
     const logoutClickEvent = () => {
@@ -234,7 +245,11 @@ class App extends Component {
         <MyNavbar isAuthed={this.state.authed} logoutClickEvent={logoutClickEvent} />
         <div className="container-fluid">
           <div className="main-output row justify-content-around py-3">
-            <Profile gitHubUserName={gitHubUserName} gitHubAccessToken={gitHubAccessToken} />
+            <Profile
+              gitHubUserName={gitHubUserName}
+              gitHubAccessToken={gitHubAccessToken}
+              gitHubCommitCount={gitHubCommitCount}
+            />
             <div className="resource-area col-md-8">
               <InputForm onSubmit={this.formSubmitEvent} />
               <hr />
@@ -253,10 +268,7 @@ class App extends Component {
           </div>
           <hr />
           <div className="graph-output row">
-            <Graph
-              loadChartData={this.loadChartData}
-              gitHubChartData={gitHubChartData}
-            />
+            <Graph loadChartData={this.loadChartData} gitHubChartData={gitHubChartData} />
           </div>
         </div>
       </div>
