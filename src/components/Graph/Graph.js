@@ -10,15 +10,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from 'recharts';
-import moment from 'moment';
-import articleShape from '../../helpers/props/articleShape';
-import githubRequests from '../../helpers/data/githubRequests';
 
 import './Graph.scss';
 
 class Graph extends React.Component {
   state = {
-    gitHubChartData: [],
     opacity: {
       articleCount: 1,
       commits: 1,
@@ -26,50 +22,14 @@ class Graph extends React.Component {
   };
 
   static propTypes = {
-    blogs: PropTypes.arrayOf(articleShape),
-    podcasts: PropTypes.arrayOf(articleShape),
-    tutorials: PropTypes.arrayOf(articleShape),
-    resources: PropTypes.arrayOf(articleShape),
-    gitHubUserName: PropTypes.string,
-    gitHubAccessToken: PropTypes.string,
+    loadChartData: PropTypes.func,
+    gitHubChartData: PropTypes.array,
   };
 
   componentDidMount() {
-    const {
-      gitHubUserName, gitHubAccessToken, blogs, podcasts, tutorials, resources,
-    } = this.props;
-
-    if (gitHubUserName && gitHubAccessToken) {
-      // Go get github commits (Paginate to get what Guthub will give me)
-      const initialUrl = `https://api.github.com/users/${gitHubUserName}/events/public`;
-      new Promise((resolve, reject) => {
-        githubRequests.getGitHubCommitsChart(initialUrl, [], gitHubAccessToken, resolve, reject);
-      })
-        .then((gitHubChartData) => {
-          // Okay got the commits now lets grab the last 60 days of completed articles from state
-          const sixty = moment().subtract(60, 'days');
-          [...blogs, ...tutorials, ...podcasts, ...resources].forEach((article) => {
-            const eventDate = moment.unix(article.completedDate).format('L');
-            const chartDateExists = gitHubChartData.find(y => y.date === eventDate);
-            // Check if the article is complete and falls after our sixt day window
-            if (article.isCompleted && moment(eventDate, 'L').isAfter(sixty)) {
-              // If there is already a date just increment article count
-              if (chartDateExists) {
-                chartDateExists.articleCount += 1;
-              } else {
-                // Article not complete so leave count alone
-                gitHubChartData.push({
-                  date: eventDate,
-                  commits: 0,
-                  articleCount: 1,
-                });
-              }
-            }
-          });
-          this.setState({ gitHubChartData });
-        })
-        .catch(error => console.error('There was an error getting the github events', error));
-    }
+    // Boo on this until I can research a better way to make sure my article
+    // arrays are getting populated before loadChartData() is run
+    setTimeout(this.props.loadChartData, 300);
   }
 
   handleMouseEnter(o) {
@@ -91,7 +51,8 @@ class Graph extends React.Component {
   }
 
   render() {
-    const { gitHubChartData, opacity } = this.state;
+    const { opacity } = this.state;
+    const { gitHubChartData } = this.props;
 
     return (
       <div className="graph col">

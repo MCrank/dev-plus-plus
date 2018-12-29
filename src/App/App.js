@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import moment from 'moment';
 
 import connection from '../helpers/data/connection';
 import Auth from '../components/Auth/Auth';
@@ -11,6 +12,7 @@ import Profile from '../components/Profile/Profile';
 import OutputForm from '../components/OutputForm/OutputForm';
 import InputForm from '../components/InputForm/InputForm';
 import Graph from '../components/Graph/Graph';
+import githubRequests from '../helpers/data/githubRequests';
 
 import './App.scss';
 
@@ -25,19 +27,22 @@ class App extends Component {
     tutorials: [],
     blogs: [],
     podcasts: [],
+    gitHubChartData: [],
   };
 
   componentDidMount() {
     connection();
 
     // Get all the articles for the logged on user and push them into seperate state based on 'type'
-    this.getAllArticles();
+    if (localStorage.getItem('uid')) {
+      this.getAllArticles();
+    }
 
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        const userId = sessionStorage.getItem('uid');
-        const gitHubUserNameStorage = sessionStorage.getItem('gitHubUsername');
-        const gitHubAccessTokenStorage = sessionStorage.getItem('gitHubAccessToken');
+        const userId = localStorage.getItem('uid');
+        const gitHubUserNameStorage = localStorage.getItem('gitHubUsername');
+        const gitHubAccessTokenStorage = localStorage.getItem('gitHubAccessToken');
         this.setState({
           authed: true,
           uid: userId,
@@ -54,6 +59,7 @@ class App extends Component {
 
   componentWillUnmount() {
     this.removeListener();
+    this.setState({ authed: false });
   }
 
   isAuthenticated = (userName, accessToken) => {
@@ -64,9 +70,10 @@ class App extends Component {
       gitHubUserName: userName,
       gitHubAccessToken: accessToken,
     });
-    sessionStorage.setItem('uid', userId);
-    sessionStorage.setItem('gitHubUsername', userName);
-    sessionStorage.setItem('gitHubAccessToken', accessToken);
+    localStorage.setItem('uid', userId);
+    localStorage.setItem('gitHubUsername', userName);
+    localStorage.setItem('gitHubAccessToken', accessToken);
+    this.getAllArticles();
   };
 
   toggleTab = (tab) => {
@@ -89,7 +96,7 @@ class App extends Component {
   // Get all of the articles and break them up into individual arrays based on type.
   getAllArticles = () => {
     articleRequests
-      .getArticles(sessionStorage.getItem('uid'))
+      .getArticles(localStorage.getItem('uid'))
       .then((articles) => {
         const resources = [];
         const tutorials = [];
@@ -151,6 +158,41 @@ class App extends Component {
       .catch(error => console.error('There was an error updating the article', error));
   };
 
+  loadChartData = () => {
+    const {
+      blogs, tutorials, podcasts, resources, gitHubAccessToken, gitHubUserName,
+    } = this.state;
+    // Go get github commits (Paginate to get what Guthub will give me)
+    const initialUrl = `https://api.github.com/users/${gitHubUserName}/events/public`;
+    new Promise((resolve, reject) => {
+      githubRequests.getGitHubCommitsChart(initialUrl, [], gitHubAccessToken, resolve, reject);
+    })
+      .then((gitHubChartData) => {
+        // Okay got the commits now lets grab the last 60 days of completed articles from state
+        const sixty = moment().subtract(60, 'days');
+        [...blogs, ...tutorials, ...podcasts, ...resources].forEach((article) => {
+          const eventDate = moment.unix(article.completedDate).format('L');
+          const chartDateExists = gitHubChartData.find(y => y.date === eventDate);
+          // Check if the article is complete and falls after our sixt day window
+          if (article.isCompleted && moment(eventDate, 'L').isAfter(sixty)) {
+            // If there is already a date just increment article count
+            if (chartDateExists) {
+              chartDateExists.articleCount += 1;
+            } else {
+              // Article not complete so leave count alone
+              gitHubChartData.push({
+                date: eventDate,
+                commits: 0,
+                articleCount: 1,
+              });
+            }
+          }
+        });
+        this.setState({ gitHubChartData });
+      })
+      .catch(error => console.error('There was an error getting the github events', error));
+  };
+
   render() {
     const {
       gitHubUserName,
@@ -160,16 +202,22 @@ class App extends Component {
       blogs,
       podcasts,
       activeTab,
+      gitHubChartData,
     } = this.state;
 
     const logoutClickEvent = () => {
       authRequests.logoutUser();
-      sessionStorage.clear();
+      localStorage.clear();
       this.setState({
         authed: false,
         uid: '',
         gitHubUserName: '',
         gitHubAccessToken: '',
+        resources: [],
+        tutorials: [],
+        blogs: [],
+        podcasts: [],
+        gitHubChartData: [],
       });
     };
 
@@ -191,6 +239,7 @@ class App extends Component {
               <InputForm onSubmit={this.formSubmitEvent} />
               <hr />
               <OutputForm
+                getAllArticles={this.getAllArticles}
                 tutorials={tutorials}
                 resources={resources}
                 blogs={blogs}
@@ -205,12 +254,8 @@ class App extends Component {
           <hr />
           <div className="graph-output row">
             <Graph
-              gitHubUserName={gitHubUserName}
-              gitHubAccessToken={gitHubAccessToken}
-              tutorials={tutorials}
-              resources={resources}
-              blogs={blogs}
-              podcasts={podcasts}
+              loadChartData={this.loadChartData}
+              gitHubChartData={gitHubChartData}
             />
           </div>
         </div>
