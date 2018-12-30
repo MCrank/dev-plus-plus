@@ -229,6 +229,7 @@ class App extends Component {
         blogs: [],
         podcasts: [],
         gitHubChartData: [],
+        gitHubCommitCount: 0,
       });
     };
 
