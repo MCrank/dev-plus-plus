@@ -29,7 +29,7 @@ class Graph extends React.Component {
   componentDidMount() {
     // Boo on this until I can research a better way to make sure my article
     // arrays are getting populated before loadChartData() is run
-    setTimeout(this.props.loadChartData, 300);
+    setTimeout(this.props.loadChartData, 500);
   }
 
   handleMouseEnter(o) {
