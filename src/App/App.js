@@ -197,6 +197,8 @@ class App extends Component {
             commitCounter += chartObject.commits;
           }
         });
+        // Sort the final results so they display in the chart properly
+        gitHubChartData.sort((a, b) => (moment(a.date, 'L').isAfter(moment(b.date, 'L')) ? 1 : -1));
         this.setState({ gitHubCommitCount: commitCounter });
         this.setState({ gitHubChartData });
       })

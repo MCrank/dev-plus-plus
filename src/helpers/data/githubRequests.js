@@ -70,8 +70,6 @@ const getGitHubCommitsChart = (url, events, accessToken, resolve, reject) => {
             });
           }
         }
-        // Sort the final results so they display in the chart properly
-        pushEventsData.sort((a, b) => (moment(a.date, 'L').isAfter(moment(b.date, 'L')) ? 1 : -1));
         resolve(pushEventsData);
       }
     })
